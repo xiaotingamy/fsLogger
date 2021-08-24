@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-11 15:01:12
- * @LastEditTime: 2021-08-23 21:40:03
+ * @LastEditTime: 2021-08-24 09:13:41
  * @LastEditors: guoxt
  */
 const express = require('express')
@@ -27,26 +27,8 @@ app.use(webpackHotMiddleware(compiler))
 
 app.use(express.static(__dirname))
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-
-// const router = express.Router()
-
-// registerBaseRouter()
-
-// app.use(router)
-
 const port = process.env.PORT || 8080
 module.exports = app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`)
 })
 
-// function registerBaseRouter () {
-//   router.get('/base/get', function(req, res) {
-//     res.json(req.query)
-//   })
-
-//   router.post('/base/post', function(req, res) {
-//     res.json(req.body)
-//   })
-// }
