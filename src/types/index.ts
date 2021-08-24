@@ -4,7 +4,7 @@
  * @Author: guoxt
  * @Date: 2021-08-22 14:57:55
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-22 16:46:56
+ * @LastEditTime: 2021-08-23 22:18:06
  */
 export type Scene = 'web' | 'wx' | 'my'
 export type Level = 'INFO' | 'WARN' | 'ERROR'

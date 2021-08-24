@@ -4,7 +4,7 @@
  * @Author: guoxt
  * @Date: 2021-08-22 15:35:58
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-22 17:19:11
+ * @LastEditTime: 2021-08-23 22:19:41
  */
 import { IFsLoggerConfig } from '../types'
 import { transitionTimestamp } from '../helpers/util'
@@ -44,7 +44,7 @@ export default function myRequestHttpLog(
     },
     url,
     method: 'POST',
-    data: JSON.stringify(sendContent),
+    data: sendContent,
     timeout: 5000,
     dataType: 'json',
     success() {
