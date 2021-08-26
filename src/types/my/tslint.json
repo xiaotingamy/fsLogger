@@ -1,5 +1,4 @@
 {
-  "extends": "dtslint/dtslint.json",
   "rules": {
     "interface-name" : [true, "never"]
   }

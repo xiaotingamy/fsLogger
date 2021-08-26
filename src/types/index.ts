@@ -4,10 +4,10 @@
  * @Author: guoxt
  * @Date: 2021-08-22 14:57:55
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-23 22:18:06
+ * @LastEditTime: 2021-08-26 20:15:45
  */
 export type Scene = 'web' | 'wx' | 'my'
-export type Level = 'INFO' | 'WARN' | 'ERROR'
+export type Level = 'INFO' | 'WARN' | 'ERROR' | 'info' | 'warn' | 'error'
 
 /**
  * @interface 上报内容
@@ -28,7 +28,7 @@ export interface IRequestContent {
 export interface IFsLoggerConfig {
   url: string
   scene: Scene
-  data: () => IRequestContent
+  data?: () => IRequestContent
 
   [propName: string]: any
 }

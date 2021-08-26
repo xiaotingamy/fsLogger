@@ -14,7 +14,7 @@ declare namespace WechatMiniprogram {
     > = Partial<Data<TData>> &
       Partial<Property<TProperty>> &
       Partial<Method<TMethod>> &
-      Partial<OtherOption> &
+      // Partial<OtherOption> &
       Partial<Lifetimes> &
       ThisType<Instance<TData, TProperty, TMethod>>
     interface Constructor {
@@ -33,7 +33,7 @@ declare namespace WechatMiniprogram {
     type DefinitionFilter = Component.DefinitionFilter
     type Lifetimes = Component.Lifetimes
 
-    type OtherOption = Omit<Component.OtherOption, 'options'>
+    // type OtherOption = Omit<Component.OtherOption, 'options'>
   }
 }
 /** 注册一个 `behavior`，接受一个 `Object` 类型的参数。*/

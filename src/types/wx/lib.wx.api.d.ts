@@ -8351,12 +8351,12 @@ this.editorCtx.insertImage({
      * 触发一个事件
      *
      * 最低基础库： `2.7.3` */
-    emit(
-      /** 事件名称 */
-      eventName: string,
-      /** 事件参数 */
-      ...args: any
-    ): void
+    // emit(
+    //   /** 事件名称 */
+    //   eventName: string,
+    //   /** 事件参数 */
+    //   ...args: any
+    // ): void
     /** [EventChannel.off(string eventName, function fn)](https://developers.weixin.qq.com/miniprogram/dev/api/route/EventChannel.off.html)
      *
      * 取消监听一个事件。给出第二个参数时，只取消给出的监听函数，否则取消所有监听函数
@@ -15958,7 +15958,7 @@ wx.writeBLECharacteristicValue({
   /** 事件监听函数 */
   type EventCallback = (
     /** 触发事件参数 */
-    ...args: any
+    ...args: Array<any>
   ) => void
   /** 接口调用结束的回调函数（调用成功、失败都会执行） */
   type ExitFullScreenCompleteCallback = (res: GeneralCallbackResult) => void
@@ -17531,9 +17531,9 @@ wx.writeBLECharacteristicValue({
 }
 // declare const console: WechatMiniprogram.Console
 declare const wx: WechatMiniprogram.Wx
-declare function require(module: string): any
-declare let module: { exports: any }
-declare let exports: any
+// declare function require(module: string): any
+// declare let module: { exports: any }
+// declare let exports: any
 
 /** [clearInterval(number intervalID)](https://developers.weixin.qq.com/miniprogram/dev/api/base/timer/clearInterval.html)
  *

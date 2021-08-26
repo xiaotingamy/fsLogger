@@ -4,7 +4,7 @@
  * @Author: guoxt
  * @Date: 2021-08-22 15:34:18
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-22 17:04:57
+ * @LastEditTime: 2021-08-26 20:17:38
  */
 
 import { IFsLoggerConfig } from '../types'
@@ -24,13 +24,13 @@ export default function axiosHttpLog(
   // 基础字段
   const baseData = {
     AppId: 'fs-logger', // 默认的appid
-    Level: level || 'INFO',
+    Level: level ? level.toUpperCase() : 'INFO',
     Content: content || '',
     LocalMachineTime: timestamp,
     UserAgent: window.navigator.userAgent
   }
   // 自定义字段
-  const customData = data()
+  const customData = data ? data() : {}
 
   // 合并上报字段
   const sendContent = {

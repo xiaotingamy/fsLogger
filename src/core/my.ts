@@ -4,7 +4,7 @@
  * @Author: guoxt
  * @Date: 2021-08-22 15:35:58
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-23 22:19:41
+ * @LastEditTime: 2021-08-26 20:24:28
  */
 import { IFsLoggerConfig } from '../types'
 import { transitionTimestamp } from '../helpers/util'
@@ -25,13 +25,13 @@ export default function myRequestHttpLog(
   // 基础字段
   const baseData = {
     AppId: 'fs-logger', // 默认的appid
-    Level: level || 'INFO',
+    Level: level ? level.toUpperCase() : 'INFO',
     Content: content || '',
     LocalMachineTime: timestamp,
     SystemInfo: JSON.stringify(systemInfo)
   }
   // 自定义字段
-  const customData = data()
+  const customData = data ? data() : {}
 
   // 合并上报字段
   const sendContent = {

@@ -244,5 +244,5 @@ declare namespace WechatMiniprogram {
   }
 }
 
-declare let App: WechatMiniprogram.App.Constructor
-declare let getApp: WechatMiniprogram.App.GetApp
+// declare let App: WechatMiniprogram.App.Constructor
+// declare let getApp: WechatMiniprogram.App.GetApp
