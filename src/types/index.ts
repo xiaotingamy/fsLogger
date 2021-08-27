@@ -4,11 +4,10 @@
  * @Author: guoxt
  * @Date: 2021-08-22 14:57:55
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-26 20:15:45
+ * @LastEditTime: 2021-08-27 13:58:27
  */
 export type Scene = 'web' | 'wx' | 'my'
 export type Level = 'INFO' | 'WARN' | 'ERROR' | 'info' | 'warn' | 'error'
-
 /**
  * @interface 上报内容
  */
@@ -31,4 +30,20 @@ export interface IFsLoggerConfig {
   data?: () => IRequestContent
 
   [propName: string]: any
+}
+
+export interface Axios {
+  defaults: IFsLoggerConfig
+
+  _logByScene(scene: Scene, level: Level, content: string | object): void
+
+  log(level: Level, content: string | object): void
+
+  info(content: string | object): void
+
+  warn(content: string | object): void
+
+  error(content: string | object): void
+
+  // patch<T = any>(url: string): AxiosPromise<T>
 }

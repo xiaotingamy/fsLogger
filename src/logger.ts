@@ -4,7 +4,7 @@
  * @Author: guoxt
  * @Date: 2021-08-22 14:54:20
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-24 22:14:16
+ * @LastEditTime: 2021-08-27 13:54:06
  */
 import { IFsLoggerConfig, Level, Scene } from './types'
 import axiosHttpLog from './core/axios'

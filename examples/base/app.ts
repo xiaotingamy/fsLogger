@@ -1,4 +1,5 @@
-import FsLogger from '../../src/index'
+// import FsLogger from '../../src/index'
+import FsLogger from 'fshows-logger'
 
 const CUSTOM = {
   CashierMode: 'mode',
