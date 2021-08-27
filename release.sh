@@ -11,7 +11,7 @@ then
   # commit
   git add -A
   git commit -m "[build] $VERSION"
-  npm version patch -m "[release] $VERSION"
+  npm version $VERSION -f
   git push
 
   # publish
