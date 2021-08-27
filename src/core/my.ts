@@ -4,7 +4,7 @@
  * @Author: guoxt
  * @Date: 2021-08-22 15:35:58
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-26 20:24:28
+ * @LastEditTime: 2021-08-27 10:50:09
  */
 import { IFsLoggerConfig } from '../types'
 import { transitionTimestamp } from '../helpers/util'
