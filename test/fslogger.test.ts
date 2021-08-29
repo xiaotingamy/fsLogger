@@ -1,19 +1,19 @@
-import DummyClass from '../src/index'
+import LoggerClass from '../src/index'
 
 /**
- * Dummy test
+ * logger test
  */
-describe('Dummy test', () => {
+describe('logger test', () => {
   it('works if true is truthy', () => {
     expect(true).toBeTruthy()
   })
 
-  it('DummyClass is instantiable', () => {
+  it('LoggerClass is instantiable', () => {
     expect(
-      new DummyClass({
+      new LoggerClass({
         url: 'https://event-upload.51fubei.com/common/event/synEvent/json',
         scene: 'web'
       })
-    ).toBeInstanceOf(DummyClass)
+    ).toBeInstanceOf(LoggerClass)
   })
 })
