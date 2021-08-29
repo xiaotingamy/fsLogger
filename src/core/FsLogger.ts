@@ -2,12 +2,10 @@ import { IFsLoggerConfig, Scene, ISendInfo, LoggerPromise, IFsLogger } from '../
 import axios from 'axios'
 import { transitionTimestamp, getData } from '../helpers/util'
 
-const timestamp = transitionTimestamp(new Date().getTime(), 'YYYY-MM-DD HH:MM:SS')
 const DEFAULT_INFO: ISendInfo = {
-  AppId: 'fs-logger',
+  AppId: 'fs-logger-default',
   Level: 'INFO',
-  Content: '',
-  LocalMachineTime: timestamp
+  Content: ''
 }
 
 /**
@@ -86,11 +84,14 @@ export default class FsLogger {
         content = JSON.stringify(content)
       }
       const data = initData(this)
+      const timestamp = transitionTimestamp(new Date().getTime(), 'YYYY-MM-DD HH:MM:SS')
+
       const sendInfo = {
         ...this.sendInfo,
         ...data,
         Level: level ? level.toUpperCase() : 'INFO',
-        Content: content || ''
+        Content: content || '',
+        LocalMachineTime: timestamp
       }
       axios({
         url: this.defaults.url,
@@ -116,11 +117,14 @@ export default class FsLogger {
         content = JSON.stringify(content)
       }
       const data = initData(this)
+      const timestamp = transitionTimestamp(new Date().getTime(), 'YYYY-MM-DD HH:MM:SS')
+
       const sendInfo = {
         ...this.sendInfo,
         ...data,
         Level: level ? level.toUpperCase() : 'INFO',
-        Content: content || ''
+        Content: content || '',
+        LocalMachineTime: timestamp
       }
       my.request({
         headers: {
@@ -147,11 +151,14 @@ export default class FsLogger {
         content = JSON.stringify(content)
       }
       const data = initData(this)
+      const timestamp = transitionTimestamp(new Date().getTime(), 'YYYY-MM-DD HH:MM:SS')
+
       const sendInfo = {
         ...this.sendInfo,
         ...data,
         Level: level ? level.toUpperCase() : 'INFO',
-        Content: content || ''
+        Content: content || '',
+        LocalMachineTime: timestamp
       }
 
       wx.request({
