@@ -1,4 +1,4 @@
-import logger from './logger'
+import logger from './core/FsLogger'
 
 export * from './types'
 

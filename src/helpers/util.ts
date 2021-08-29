@@ -1,11 +1,4 @@
-/*
- * @Description:
- * @version:
- * @Author: guoxt
- * @Date: 2021-08-22 16:18:02
- * @LastEditors: guoxt
- * @LastEditTime: 2021-08-22 16:19:03
- */
+import { IFsLogger } from '../types'
 
 /**
  * @function 时间戳转时间
@@ -52,5 +45,13 @@ export function transitionTimestamp(val: any, type: string) {
       )
     case 'MM-DD HH:MM':
       return month + '-' + day + ' ' + hour + ':' + minute
+  }
+}
+
+export function getData(data: Function, context: IFsLogger): any {
+  try {
+    return data.call(context, context)
+  } catch (e) {
+    return {}
   }
 }

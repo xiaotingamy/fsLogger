@@ -4,18 +4,17 @@
  * @Author: guoxt
  * @Date: 2021-08-22 14:57:55
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-27 13:58:27
+ * @LastEditTime: 2021-08-29 14:17:39
  */
 export type Scene = 'web' | 'wx' | 'my'
-export type Level = 'INFO' | 'WARN' | 'ERROR' | 'info' | 'warn' | 'error'
 /**
  * @interface 上报内容
  */
-export interface IRequestContent {
+export interface ISendInfo {
   AppId?: string
   Content?: string | object
-  Level?: Level
-  LocalMachineTime?: string
+  Level?: string
+  LocalMachineTime?: string | undefined
   UserAgent?: string
   SystemInfo?: string
   [propName: string]: any
@@ -27,23 +26,30 @@ export interface IRequestContent {
 export interface IFsLoggerConfig {
   url: string
   scene: Scene
-  data?: () => IRequestContent
+  data?: () => ISendInfo
 
   [propName: string]: any
 }
-
-export interface Axios {
+export interface LoggerResponse<T = any> {
+  data?: T
+  status?: number
+  statusText?: string
+  [propName: string]: any
+}
+export interface LoggerPromise<T = any> extends Promise<LoggerResponse<T>> {}
+export interface IFsLogger {
   defaults: IFsLoggerConfig
+  sendInfo: ISendInfo
 
-  _logByScene(scene: Scene, level: Level, content: string | object): void
+  _logByScene<T = any>(scene: Scene, level: string, content: string | object): LoggerPromise<T>
+  log<T = any>(level: string, content: string | object): LoggerPromise<T>
+  info<T = any>(content: string | object): LoggerPromise<T>
+  warn<T = any>(content: string | object): LoggerPromise<T>
+  error<T = any>(content: string | object): LoggerPromise<T>
 
-  log(level: Level, content: string | object): void
+  axiosHttpLog<T = any>(level?: string, content?: string | object): LoggerPromise<T>
+  myRequestHttpLog<T = any>(level?: string, content?: string | object): LoggerPromise<T>
+  wxRequestHttpLog<T = any>(level?: string, content?: string | object): LoggerPromise<T>
 
-  info(content: string | object): void
-
-  warn(content: string | object): void
-
-  error(content: string | object): void
-
-  // patch<T = any>(url: string): AxiosPromise<T>
+  updateInfo(info: ISendInfo): void
 }
