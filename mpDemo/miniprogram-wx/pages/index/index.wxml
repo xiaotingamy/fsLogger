@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="usermotto" bindtap="logger">
+    <button class="user-motto">日志上报</button>
+  </view>
+</view>
