@@ -1,5 +1,5 @@
-// import FsLogger from '../../src/index'
-import FsLogger from 'fshows-logger'
+import FsLogger from '../../src/index'
+// import FsLogger from 'fshows-logger'
 
 const extra = {
   mode: '独立收银模式'

@@ -39,6 +39,12 @@ function initDefaultInfo(config) {
         DEFAULT_INFO.UserAgent = window.navigator.userAgent;
     }
 }
+/**
+ * @function:
+ * @author: guoxt
+ * @param {IFsLogger} context
+ * @return {*}
+ */
 function initData(context) {
     var data = context.defaults.data;
     data = typeof data === 'function' ? (0, util_1.getData)(data, context) : data || {};
@@ -93,7 +99,7 @@ var FsLogger = /** @class */ (function () {
                 headers: {
                     'content-type': 'application/json;charset=utf-8'
                 },
-                data: JSON.stringify(sendInfo),
+                data: sendInfo,
                 timeout: 5000
             })
                 .then(function (res) {
@@ -146,7 +152,7 @@ var FsLogger = /** @class */ (function () {
                 },
                 url: _this.defaults.url,
                 method: 'POST',
-                data: JSON.stringify(sendInfo),
+                data: sendInfo,
                 timeout: 5000,
                 dataType: 'json',
                 success: function (res) {

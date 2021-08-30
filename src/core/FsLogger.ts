@@ -31,7 +31,13 @@ function initDefaultInfo(config: IFsLoggerConfig): void {
   }
 }
 
-function initData(context: IFsLogger) {
+/**
+ * @function:
+ * @author: guoxt
+ * @param {IFsLogger} context
+ * @return {*}
+ */
+function initData(context: IFsLogger): any {
   let data = context.defaults.data
   data = typeof data === 'function' ? getData(data, context) : data || {}
   return data
@@ -99,7 +105,7 @@ export default class FsLogger {
         headers: {
           'content-type': 'application/json;charset=utf-8'
         },
-        data: JSON.stringify(sendInfo),
+        data: sendInfo,
         timeout: 5000
       })
         .then(res => {
@@ -167,7 +173,7 @@ export default class FsLogger {
         },
         url: this.defaults.url,
         method: 'POST',
-        data: JSON.stringify(sendInfo),
+        data: sendInfo,
         timeout: 5000,
         dataType: 'json',
         success(res) {
