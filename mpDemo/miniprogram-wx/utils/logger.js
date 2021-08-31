@@ -1,10 +1,14 @@
 import FsLogger from 'fshows-logger'
-export default new FsLogger({
+const extra = {
+  mode: getApp().globalData.mode
+}
+const logger = new FsLogger({
   url: 'https://event-upload.51fubei.com/common/event/synEvent/json',
-  scene: 'wx',
   data() {
     return {
-      AppId: `fs-wechat-mina-project`
+      AppId: `fs-wechat-mina-project`,
+      ...extra
     }
   }
 })
+export default logger

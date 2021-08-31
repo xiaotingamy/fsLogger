@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getData = exports.transitionTimestamp = void 0;
+exports.handleError = exports.handleWarn = exports.isPlainObject = exports.getData = exports.transitionTimestamp = void 0;
 /**
  * @function 时间戳转时间
  * @author eleven
@@ -27,7 +27,7 @@ function transitionTimestamp(val, type) {
             return year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
         case 'HH:MM:SS':
             return hour + ':' + minute + ':' + second;
-        case 'YYYY-MM-DD HH:MM:SS':
+        case 'YYYY-MM-DD HH:MM:SS.ss':
             return (year +
                 '-' +
                 month +
@@ -46,13 +46,61 @@ function transitionTimestamp(val, type) {
     }
 }
 exports.transitionTimestamp = transitionTimestamp;
+/**
+ * @function: 执行data函数
+ * @author: guoxt
+ * @param {Function} data
+ * @param {IFsLogger} context
+ * @return {*}
+ */
 function getData(data, context) {
     try {
-        return data.call(context, context);
+        return data.call(context);
     }
     catch (e) {
+        handleError(e, "data()");
         return {};
     }
 }
 exports.getData = getData;
+var _toString = Object.prototype.toString;
+/**
+ * @function: 判断是否为对象
+ * @author: guoxt
+ * @param {any} obj
+ * @return {*}
+ */
+function isPlainObject(obj) {
+    return _toString.call(obj) === '[object Object]';
+}
+exports.isPlainObject = isPlainObject;
+/**
+ * @function: console报错
+ * @author: guoxt
+ * @param {any} msg
+ * @return {*}
+ */
+function handleWarn(msg) {
+    if (typeof console !== 'undefined') {
+        console.error("[FsLogger warn]: " + msg);
+    }
+}
+exports.handleWarn = handleWarn;
+/**
+ * @function: console报错
+ * @author: guoxt
+ * @param {any} err
+ * @param {string} info
+ * @return {*}
+ */
+function handleError(err, info) {
+    handleWarn("Error in " + info + ": \"" + err.toString() + "\"");
+    if (typeof console !== 'undefined') {
+        console.error(err);
+    }
+    else {
+        throw err;
+    }
+}
+exports.handleError = handleError;
 //# sourceMappingURL=util.js.map

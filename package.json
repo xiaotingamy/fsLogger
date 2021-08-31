@@ -1,6 +1,6 @@
 {
   "name": "fshows-logger",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "",
   "miniprogram": "dist",
   "keywords": [],
@@ -34,9 +34,7 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once",
-    "prepub": "npm run build",
-    "pub": "sh release.sh"
+    "travis-deploy-once": "travis-deploy-once"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

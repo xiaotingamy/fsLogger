@@ -27,7 +27,7 @@ export function transitionTimestamp(val: any, type: string) {
       return year + '-' + month + '-' + day + ' ' + hour + ':' + minute
     case 'HH:MM:SS':
       return hour + ':' + minute + ':' + second
-    case 'YYYY-MM-DD HH:MM:SS':
+    case 'YYYY-MM-DD HH:MM:SS.ss':
       return (
         year +
         '-' +
@@ -48,10 +48,57 @@ export function transitionTimestamp(val: any, type: string) {
   }
 }
 
+/**
+ * @function: 执行data函数
+ * @author: guoxt
+ * @param {Function} data
+ * @param {IFsLogger} context
+ * @return {*}
+ */
 export function getData(data: Function, context: IFsLogger): any {
   try {
-    return data.call(context, context)
+    return data.call(context)
   } catch (e) {
+    handleError(e, `data()`)
     return {}
+  }
+}
+
+const _toString = Object.prototype.toString
+/**
+ * @function: 判断是否为对象
+ * @author: guoxt
+ * @param {any} obj
+ * @return {*}
+ */
+export function isPlainObject(obj: any): boolean {
+  return _toString.call(obj) === '[object Object]'
+}
+
+/**
+ * @function: console报错
+ * @author: guoxt
+ * @param {any} msg
+ * @return {*}
+ */
+export function handleWarn(msg: any): void {
+  if (typeof console !== 'undefined') {
+    console.error(`[FsLogger warn]: ${msg}`)
+  }
+}
+
+/**
+ * @function: console报错
+ * @author: guoxt
+ * @param {any} err
+ * @param {string} info
+ * @return {*}
+ */
+export function handleError(err: any, info?: string): void {
+  handleWarn(`Error in ${info}: "${err.toString()}"`)
+  if (typeof console !== 'undefined') {
+    console.error(err)
+  } else {
+    throw err
   }
 }

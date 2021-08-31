@@ -19,19 +19,21 @@ const btnEl = document.getElementById('btn')
 const changeEl = document.getElementById('change')
 
 btnEl!.addEventListener('click', e => {
-  logger.log('INFO', '我是一条info日志').then(res => {
-    console.log('*******阿里云日志上报成功******', res)
-  }).catch(err => {
-    console.log('*******阿里云日志上报失败******', err)
-  })
-  logger.info('我是第二条info日志').then(res => {
-    console.log('*******阿里云日志上报成功******', res)
-  }).catch(err => {
-    console.log('*******阿里云日志上报失败******', err)
-  })
-  logger.warn('我是一条warn日志')
-  logger.error('我是一条error日志')
-  logger.error({ errorCode: 1009, errorMsg: '网络繁忙，请稍后再试' })
+  for (let i = 0; i < 20; i++) {
+    logger.log('INFO', '我是一条info日志').then(res => {
+      console.log('*******阿里云日志上报成功******', res)
+    }).catch(err => {
+      console.log('*******阿里云日志上报失败******', err)
+    })
+  }
+  // logger.info('我是一条info日志').then(res => {
+  //   console.log('*******阿里云日志上报成功******', res)
+  // }).catch(err => {
+  //   console.log('*******阿里云日志上报失败******', err)
+  // })
+  // logger.warn('我是一条warn日志')
+  // logger.error('我是一条error日志')
+  // logger.error({ errorCode: 1009, errorMsg: '网络繁忙，请稍后再试' })
 })
 
 changeEl!.addEventListener('click', e => {

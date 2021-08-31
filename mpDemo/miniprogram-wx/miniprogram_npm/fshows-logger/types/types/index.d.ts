@@ -1,4 +1,3 @@
-export declare type Scene = 'web' | 'wx' | 'my';
 /**
  * @interface 上报内容
  */
@@ -11,13 +10,20 @@ export interface ISendInfo {
     SystemInfo?: string;
     [propName: string]: any;
 }
+export interface IRequestOptions {
+    url: string;
+    method: 'POST' | 'GET';
+    data: object | string;
+    timeout: number;
+    [propName: string]: any;
+}
 /**
  * @interface 配置选项
  */
 export interface IFsLoggerConfig {
     url: string;
-    scene: Scene;
-    data?: () => ISendInfo;
+    timeout?: number;
+    data?: (() => ISendInfo) | object;
     [propName: string]: any;
 }
 export interface LoggerResponse<T = any> {
@@ -31,7 +37,8 @@ export interface LoggerPromise<T = any> extends Promise<LoggerResponse<T>> {
 export interface IFsLogger {
     defaults: IFsLoggerConfig;
     sendInfo: ISendInfo;
-    _logByScene<T = any>(scene: Scene, level: string, content: string | object): LoggerPromise<T>;
+    requestOptions: IRequestOptions;
+    _logByEnv<T = any>(level: string, content: string | object): LoggerPromise<T>;
     log<T = any>(level: string, content: string | object): LoggerPromise<T>;
     info<T = any>(content: string | object): LoggerPromise<T>;
     warn<T = any>(content: string | object): LoggerPromise<T>;

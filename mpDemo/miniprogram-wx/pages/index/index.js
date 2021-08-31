@@ -8,6 +8,9 @@ Page({
   },
   onLoad() {
   },
+  changeMode () {
+    getApp().globalData.mode = 'mode 2'
+  },
   logger () {
     logger.log('INFO', '我是一条info日志').then(res => {
       console.log('*******阿里云日志上报成功******', res)

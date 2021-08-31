@@ -3,4 +3,5 @@
   <view class="usermotto" bindtap="logger">
     <button class="user-motto">日志上报</button>
   </view>
+  <button class="user-motto" bindtap="changeMode">change mode</button>
 </view>

@@ -7,4 +7,33 @@ import { IFsLogger } from '../types';
  * 如只需要如期，则startNum ： 0 ， endNum ： 10
  */
 export declare function transitionTimestamp(val: any, type: string): string | undefined;
+/**
+ * @function: 执行data函数
+ * @author: guoxt
+ * @param {Function} data
+ * @param {IFsLogger} context
+ * @return {*}
+ */
 export declare function getData(data: Function, context: IFsLogger): any;
+/**
+ * @function: 判断是否为对象
+ * @author: guoxt
+ * @param {any} obj
+ * @return {*}
+ */
+export declare function isPlainObject(obj: any): boolean;
+/**
+ * @function: console报错
+ * @author: guoxt
+ * @param {any} msg
+ * @return {*}
+ */
+export declare function handleWarn(msg: any): void;
+/**
+ * @function: console报错
+ * @author: guoxt
+ * @param {any} err
+ * @param {string} info
+ * @return {*}
+ */
+export declare function handleError(err: any, info?: string): void;

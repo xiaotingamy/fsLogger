@@ -4,9 +4,9 @@
  * @Author: guoxt
  * @Date: 2021-08-22 14:57:55
  * @LastEditors: guoxt
- * @LastEditTime: 2021-08-29 14:17:39
+ * @LastEditTime: 2021-08-31 15:24:13
  */
-export type Scene = 'web' | 'wx' | 'my'
+// export type Scene = 'web' | 'wx' | 'my'
 /**
  * @interface 上报内容
  */
@@ -20,13 +20,22 @@ export interface ISendInfo {
   [propName: string]: any
 }
 
+export interface IRequestOptions {
+  url: string
+  method: 'POST' | 'GET'
+  data: object | string
+  timeout: number
+  [propName: string]: any
+}
+
 /**
  * @interface 配置选项
  */
 export interface IFsLoggerConfig {
   url: string
-  scene: Scene
-  data?: () => ISendInfo
+  // scene: Scene
+  timeout?: number
+  data?: (() => ISendInfo) | object
 
   [propName: string]: any
 }
@@ -40,8 +49,9 @@ export interface LoggerPromise<T = any> extends Promise<LoggerResponse<T>> {}
 export interface IFsLogger {
   defaults: IFsLoggerConfig
   sendInfo: ISendInfo
+  requestOptions: IRequestOptions
 
-  _logByScene<T = any>(scene: Scene, level: string, content: string | object): LoggerPromise<T>
+  _logByEnv<T = any>(level: string, content: string | object): LoggerPromise<T>
   log<T = any>(level: string, content: string | object): LoggerPromise<T>
   info<T = any>(content: string | object): LoggerPromise<T>
   warn<T = any>(content: string | object): LoggerPromise<T>
