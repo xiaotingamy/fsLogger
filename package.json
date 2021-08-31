@@ -1,6 +1,6 @@
 {
   "name": "fshows-logger",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "",
   "miniprogram": "dist",
   "keywords": [],
@@ -99,7 +99,7 @@
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
     "express": "^4.17.1",
-    "fshows-logger": "^1.0.14",
+    "fshows-logger": "^1.0.18",
     "husky": "^1.0.1",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
